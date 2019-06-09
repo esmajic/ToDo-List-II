@@ -1,6 +1,6 @@
 # ToDo-List-II (second task related to ToDo project in BildIT June 2019)
 
-Reminder: code looks so ugly and that means that this is preliminary version...edition will arise soon...
+Reminder: code looks so ugly(but it works) and that means that this is preliminary version...edition will arise soon...
 
 - create Account
 - log-in into Account(if it exists)
