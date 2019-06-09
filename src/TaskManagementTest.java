@@ -30,5 +30,10 @@ public class TaskManagementTest {
 		boolean condition = tm.logIn(500, "1234", accounts);
 		assertTrue(condition);
 	}
+	@Test
+	public void shouldReturnTrueWhenPasswordIsFourDigits() {
+		boolean condition = tm.passwordNumeric("1234");
+		assertTrue(condition);
+	}
 
 }

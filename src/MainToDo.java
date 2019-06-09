@@ -59,140 +59,147 @@ public class MainToDo {
 
 		PrintWriter output1 = new PrintWriter(file1);
 		PrintWriter output2 = new PrintWriter(file2);
-		
-			do {
-				System.out.println("\n=========================================");
-				System.out.println("=         To Do Application             =");
-				System.out.println("=========================================");
 
-				System.out.println("Enter 1 to create Account");
-				System.out.println("Enter 2 to log-in to your Account");
-				System.out.println("Enter 3 to list all created Accounts");
-				System.out.println("Enter 4 to delete Account");
-				System.out.println("Enter 0 to Exit");
+		do {
+			System.out.println("\n=========================================");
+			System.out.println("=         To Do Application             =");
+			System.out.println("=========================================");
 
-				System.out.print("\nPlease, select desired operation: ");
-				select = input.nextInt();
+			System.out.println("Enter 1 to create Account");
+			System.out.println("Enter 2 to log-in to your Account");
+			System.out.println("Enter 3 to list all created Accounts");
+			System.out.println("Enter 4 to delete Account");
+			System.out.println("Enter 0 to Exit");
 
-				if (select == 1) {
+			System.out.print("\nPlease, select desired operation: ");
+			select = input.nextInt();
 
-					int accountNumber;
-					TaskManagement number = new TaskManagement();
-					System.out.println("\nProcess of account creation:");
-					System.out.println("\nYour account number will be created randomly.");
-					do {
-						accountNumber = (int) (Math.random() * 1000) + 1;
-					} while (number.accountNumberExists(accountNumber, accounts));
-					System.out.print("\nCreate your password:  ");
+			if (select == 1) {
+				int accountNumber;
+				TaskManagement number = new TaskManagement();
+				System.out.println("\nProcess of account creation:");
+				System.out.println("\nYour account number will be created randomly.");
+				do {
+					accountNumber = (int) (Math.random() * 1000) + 1;
+				} while (number.accountNumberExists(accountNumber, accounts));
+				String password = "";
+				do {
+					if (password.length() == 0) {
+						System.out.print("\nCreate your password:  ");
+						input.nextLine();
+						password = input.nextLine();
+					} else {
+						System.out.println("Password must consist four digits! Please, create password:  ");
+						password = input.nextLine();
+					}
+				} while (password.length() != 4 || !number.passwordNumeric(password));
+				Account account = new Account(accountNumber, password);
+				accounts.add(account);
+				System.out
+						.println("\nAccount with account number " + accountNumber + " has been successfully created.");
+
+			} else if (select == 2) {
+				if (accounts.size() == 0) {
+					System.out.println("\nThere are no accounts in our data base. Create account to log-in.");
+				} else {
+					System.out.println("\n=============================");
+					System.out.println("=     Account Log-in        =");
+					System.out.println("=============================");
+					System.out.println("\nPlease, enter your account number:  ");
+					int accountNumber = input.nextInt();
+					System.out.print("\nPlease, enter your PIN code to log-in to your account:  ");
 					input.nextLine();
 					String password = input.nextLine();
-					Account account = new Account(accountNumber, password);
-					accounts.add(account);
-					System.out.println(
-							"\nAccount with account number " + accountNumber + " has been successfully created.");
+					TaskManagement todo = new TaskManagement();
+					int option;
+					if (todo.logIn(accountNumber, password, accounts)) {
+						System.out.println("\nYou've been successfully logged in.");
+						do {
 
-				} else if (select == 2) {
-					if (accounts.size() == 0) {
-						System.out.println("\nThere are no accounts in our data base. Create account to log-in.");
-					} else {
-						System.out.println("\n=============================");
-						System.out.println("=     Account Log-in        =");
-						System.out.println("=============================");
-						System.out.println("\nPlease, enter your account number:  ");
-						int accountNumber = input.nextInt();
-						System.out.print("\nPlease, enter your PIN code to log-in to your account:  ");
-						input.nextLine();
-						String password = input.nextLine();
-						TaskManagement todo = new TaskManagement();
-						int option;
-						if (todo.logIn(accountNumber, password, accounts)) {
-							System.out.println("\nYou've been successfully logged in.");
-							do {
+							System.out.println("\n==================================");
+							System.out.println("  Enter 1 to Create task");
+							System.out.println("  Enter 2 to Edit task");
+							System.out.println("  Enter 3 to Delete task");
+							System.out.println("  Enter 4 to Tag/Untag task");
+							System.out.println("  Enter 5 to List all tasks");
+							System.out.println("  Enter 6 to List tagged tasks");
+							System.out.println("  Enter 0 to Exit Task Management");
+							System.out.println("==================================");
+							System.out.println("\nPlease, enter number for desired operation: ");
+							option = input.nextInt();
 
-								System.out.println("\n==================================");
-								System.out.println("  Enter 1 to Create task");
-								System.out.println("  Enter 2 to Edit task");
-								System.out.println("  Enter 3 to Delete task");
-								System.out.println("  Enter 4 to Tag/Untag task");
-								System.out.println("  Enter 5 to List all tasks");
-								System.out.println("  Enter 6 to List tagged tasks");
-								System.out.println("  Enter 0 to Exit Task Management");
-								System.out.println("==================================");
-								System.out.println("\nPlease, enter number for desired operation: ");
-								option = input.nextInt();
+							if (option == 1) {
 
-								if (option == 1) {
+								System.out.println("\nCreating task process...");
+								System.out.println("Enter account owner's name:  ");
+								input.nextLine();
+								String name = input.nextLine();
+								System.out.println("Enter task description:  ");
+								String taskDescription = input.nextLine();
+								DateFormat myFormat = new SimpleDateFormat("dd-MM-yyyy");
+								System.out.println("\nEnter date of task creation (dd-MM-yyyy):  ");
+								String creationDate = input.nextLine();
+								Date dateTaskCreated = myFormat.parse(creationDate);
+								boolean tagged = false;
+								TaskToDo task = new TaskToDo(name, taskDescription, dateTaskCreated, tagged);
+								tasks.add(task);
+								System.out.println("\nTask has been successfully created.");
 
-									System.out.println("\nCreating task process...");
-									System.out.println("Enter account owner's name:  ");
-									input.nextLine();
-									String name = input.nextLine();
-									System.out.println("Enter task description:  ");
-									String taskDescription = input.nextLine();
-									DateFormat myFormat = new SimpleDateFormat("dd-MM-yyyy");
-									System.out.println("\nEnter date of task creation (dd-MM-yyyy):  ");
-									String creationDate = input.nextLine();
-									Date dateTaskCreated = myFormat.parse(creationDate);
-									boolean tagged = false;
-									TaskToDo task = new TaskToDo(name, taskDescription, dateTaskCreated, tagged);
-									tasks.add(task);
-									System.out.println("\nTask has been successfully created.");
+							} else if (option == 2) {
+								System.out.println("\nEditing task process...");
+								System.out.print("Enter task index as per list to be edited:  ");
+								int taskListNumber = input.nextInt();
+								System.out.println("Enter new description for desired task:  ");
+								input.nextLine();
+								String taskDescription = input.nextLine();
+								todo.editExistingTask(taskListNumber, taskDescription, tasks);
+								System.out.println("\nTask has been successfully edited.");
 
-								} else if (option == 2) {
-									System.out.println("\nEditing task process...");
-									System.out.print("Enter task index as per list to be edited:  ");
-									int taskListNumber = input.nextInt();
-									System.out.println("Enter new description for desired task:  ");
-									input.nextLine();
-									String taskDescription = input.nextLine();
-									todo.editExistingTask(taskListNumber, taskDescription, tasks);
-									System.out.println("\nTask has been successfully edited.");
+							} else if (option == 3) {
+								System.out.println("\nDeleting task process...");
+								System.out.print("Enter task index as per list to be deleted:  ");
+								int taskListNumber = input.nextInt();
+								todo.deleteExistingTask(taskListNumber, tasks);
+								System.out.println("\nTask has been successfully deleted.");
 
-								} else if (option == 3) {
-									System.out.println("\nDeleting task process...");
-									System.out.print("Enter task index as per list to be deleted:  ");
-									int taskListNumber = input.nextInt();
-									todo.deleteExistingTask(taskListNumber, tasks);
-									System.out.println("\nTask has been successfully deleted.");
-
-								} else if (option == 4) {
-									System.out.println("\nTagging/Untagging task process... ");
-									if (tasks.size() != 0) {
-										System.out.print("Enter task index as per list to be tagged/untagged:  ");
-										int taskIndexNumber = input.nextInt() - 1;
-										todo.tagUntagTask(taskIndexNumber, tasks);
-									}
-
-								} else if (option == 5) {
-									System.out.println("\nListing all tasks...(run option again for reversed order): ");
-									if (tasks.size() != 0) {
-										todo.listAllTasks(tasks);
-									}
-
-								} else if (option == 6) {
-									todo.listTaggedTasks(tasks);
-
-								} else if (option == 0) {
-									System.out.println("Thank you for using Task Management.");
+							} else if (option == 4) {
+								System.out.println("\nTagging/Untagging task process... ");
+								if (tasks.size() != 0) {
+									System.out.print("Enter task index as per list to be tagged/untagged:  ");
+									int taskIndexNumber = input.nextInt() - 1;
+									todo.tagUntagTask(taskIndexNumber, tasks);
 								}
 
-							} while (option != 0);
+							} else if (option == 5) {
+								System.out.println("\nListing all tasks...(run option again for reversed order): ");
+								if (tasks.size() != 0) {
+									todo.listAllTasks(tasks);
+								}
 
-						} else {
-							System.out.println("\nWrong account number and/or password has been entered. Try again.");
-						}
+							} else if (option == 6) {
+								todo.listTaggedTasks(tasks);
+
+							} else if (option == 0) {
+								System.out.println("Thank you for using Task Management.");
+							}
+
+						} while (option != 0);
+
+					} else {
+						System.out.println("\nWrong account number and/or password has been entered. Try again.");
 					}
-				} else if (select == 3) {
-					TaskManagement list = new TaskManagement();
-					list.listOfAllAccounts(accounts);
-				} else if (select == 4) {
-					TaskManagement list = new TaskManagement();
-					System.out.print("Enter Account list number:  ");
-					int accountListNumber = input.nextInt();
-					list.deleteExistingAccount(accountListNumber, accounts);
 				}
+			} else if (select == 3) {
+				TaskManagement list = new TaskManagement();
+				list.listOfAllAccounts(accounts);
+			} else if (select == 4) {
+				TaskManagement list = new TaskManagement();
+				System.out.print("Enter Account list number:  ");
+				int accountListNumber = input.nextInt();
+				list.deleteExistingAccount(accountListNumber, accounts);
+			}
 
-			} while (select != 0);
+		} while (select != 0);
 
 		for (int i = 0; i < accounts.size(); i++) {
 			output1.println(accounts.get(i).getAccountNumber());

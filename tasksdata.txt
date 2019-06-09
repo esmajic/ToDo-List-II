@@ -1,4 +1,0 @@
-Ervin Smajic
-coding ToDo console app
-Fri Jun 07 00:00:00 CEST 2019
-false

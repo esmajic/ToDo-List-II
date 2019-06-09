@@ -98,4 +98,19 @@ public class TaskManagement {
 		}
 	}
 
+	public boolean passwordNumeric(String password) {
+		int counter = 0;
+		for (int i = 0; i < password.length(); i++) {
+			if (Character.isDigit(password.charAt(i))) {
+				counter++;
+			}
+		}
+		if (counter == password.length()) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+
 }
