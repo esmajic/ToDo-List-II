@@ -83,9 +83,19 @@ public class TaskManagement {
 		}
 	}
 
+	public int numberOfTaggedTasks(ArrayList<TaskToDo> tasks) {
+		int counter = 0;
+		for (int i = 0; i < tasks.size(); i++) {
+			if (tasks.get(i).isTagged()) {
+				counter++;
+			}
+		}
+		return counter;
+	}
+
 	public void listTaggedTasks(ArrayList<TaskToDo> tasks) {
 		System.out.println("\nList of all tagged tasks:  ");
-		if (tasks.size() == 0) {
+		if (numberOfTaggedTasks(tasks) == 0) {
 			System.out.println("\nThere are no tasks in the list.");
 		} else {
 			for (int i = 0; i < tasks.size(); i++) {

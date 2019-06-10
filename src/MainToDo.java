@@ -65,11 +65,8 @@ public class MainToDo {
 			System.out.println("=         To Do Application             =");
 			System.out.println("=========================================");
 
-			System.out.println("Enter 1 to create Account");
-			System.out.println("Enter 2 to log-in to your Account");
-			System.out.println("Enter 3 to list all created Accounts");
-			System.out.println("Enter 4 to delete Account");
-			System.out.println("Enter 0 to Exit");
+			System.out.println("Enter 1 to create Account" + "\nEnter 2 to log-in to your Account"
+					+ "\nEnter 3 to list all created Accounts" + "\nEnter 4 to delete Account" + "\nEnter 0 to Exit");
 
 			System.out.print("\nPlease, select desired operation: ");
 			select = input.nextInt();
@@ -102,10 +99,8 @@ public class MainToDo {
 				if (accounts.size() == 0) {
 					System.out.println("\nThere are no accounts in our data base. Create account to log-in.");
 				} else {
-					System.out.println("\n=============================");
-					System.out.println("=     Account Log-in        =");
-					System.out.println("=============================");
-					System.out.println("\nPlease, enter your account number:  ");
+					System.out.println("\n=============================" + "\n=     Account Log-in        ="
+							+ "\n=============================" + "\nPlease, enter your account number:  ");
 					int accountNumber = input.nextInt();
 					System.out.print("\nPlease, enter your PIN code to log-in to your account:  ");
 					input.nextLine();
@@ -116,16 +111,12 @@ public class MainToDo {
 						System.out.println("\nYou've been successfully logged in.");
 						do {
 
-							System.out.println("\n==================================");
-							System.out.println("  Enter 1 to Create task");
-							System.out.println("  Enter 2 to Edit task");
-							System.out.println("  Enter 3 to Delete task");
-							System.out.println("  Enter 4 to Tag/Untag task");
-							System.out.println("  Enter 5 to List all tasks");
-							System.out.println("  Enter 6 to List tagged tasks");
-							System.out.println("  Enter 0 to Exit Task Management");
-							System.out.println("==================================");
-							System.out.println("\nPlease, enter number for desired operation: ");
+							System.out.println("\n==================================" + "\n  Enter 1 to Create task"
+									+ "\n  Enter 2 to Edit task" + "\n  Enter 3 to Delete task"
+									+ "\n  Enter 4 to Tag/Untag task" + "\n  Enter 5 to List all tasks"
+									+ "\n  Enter 6 to List tagged tasks" + "\n  Enter 0 to Exit Task Management"
+									+ "\n=================================="
+									+ "\nPlease, enter number for desired operation: ");
 							option = input.nextInt();
 
 							if (option == 1) {
