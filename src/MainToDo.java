@@ -61,9 +61,8 @@ public class MainToDo {
 		PrintWriter output2 = new PrintWriter(file2);
 
 		do {
-			System.out.println("\n=========================================");
-			System.out.println("=         To Do Application             =");
-			System.out.println("=========================================");
+			System.out.println("\n========================================="
+					+ "\n=         To Do Application             =" + "\n=========================================");
 
 			System.out.println("Enter 1 to create Account" + "\nEnter 2 to log-in to your Account"
 					+ "\nEnter 3 to list all created Accounts" + "\nEnter 4 to delete Account" + "\nEnter 0 to Exit");
