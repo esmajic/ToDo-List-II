@@ -109,12 +109,12 @@ public class MainToDo {
 					if (todo.logIn(accountNumber, password, accounts)) {
 						System.out.println("\nYou've been successfully logged in.");
 						do {
-
-							System.out.println("\n==================================" + "\n  Enter 1 to Create task"
-									+ "\n  Enter 2 to Edit task" + "\n  Enter 3 to Delete task"
-									+ "\n  Enter 4 to Tag/Untag task" + "\n  Enter 5 to List all tasks"
-									+ "\n  Enter 6 to List tagged tasks" + "\n  Enter 0 to Exit Task Management"
-									+ "\n=================================="
+							System.out.println("\n==================================="
+									+ "\n=         Task Management         =" + "\n==================================="
+									+ "\n  Enter 1 to Create task" + "\n  Enter 2 to Edit task"
+									+ "\n  Enter 3 to Delete task" + "\n  Enter 4 to Tag/Untag task"
+									+ "\n  Enter 5 to List all tasks" + "\n  Enter 6 to List tagged tasks"
+									+ "\n  Enter 0 to Exit Task Management" + "\n=================================="
 									+ "\nPlease, enter number for desired operation: ");
 							option = input.nextInt();
 
