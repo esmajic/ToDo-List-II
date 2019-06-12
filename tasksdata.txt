@@ -1,4 +1,0 @@
-Ervin Smajic
-coding ToDo project
-Mon Jun 10 00:00:00 PDT 2019
-false
